@@ -1,10 +1,11 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { } from "./admin/dashboard/admin.dashboard";
+import { AdminGuard } from "./_services/guards/admin.guards";
 
 
 const myRoutes: Routes = [
-    { path: "admin", loadChildren: () => import("./admin/admin.module").then(mod => mod.AdminModule) },
+    { path: "admin",loadChildren: () => import("./admin/admin.module").then(mod => mod.AdminModule) },
     { path: "parents", loadChildren: () => import("./parents/parents.module").then(mod => mod.ParentsModule) },
 
     // { path: "**", component:   }

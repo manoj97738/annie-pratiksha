@@ -31,21 +31,23 @@ export class LoginComponent implements OnInit {
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
     });
-    
+
 
   }
   get f(): any { return this.form.controls; }
-   
+
   onSubmit() {
     if (this.form.invalid) {
       return;
     }
     this.accountService.login(this.f.username.value, this.f.password.value)
       .subscribe({
-        next: (user:any) => {
+        next: (user: any) => {
           alert("  login success");
-          sessionStorage.setItem("user", JSON.stringify(user));
+          const dt: any = JSON.stringify(user)
+          sessionStorage.setItem("user", dt);
           sessionStorage.setItem("accessToken", JSON.stringify(user.accessToken));
+          this.accountService.emitEvent({ login: true, ...dt })
         },
       });
   }

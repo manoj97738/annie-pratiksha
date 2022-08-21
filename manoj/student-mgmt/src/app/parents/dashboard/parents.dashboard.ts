@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'jseval-parents-dashboard',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class ParentDashboardComponent {
   title = 'student-mgmt';
+  @Input("salary") salary: any;
+  
 }
